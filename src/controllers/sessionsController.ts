@@ -38,7 +38,8 @@ export class sessionsController {
         subject: String(user.id),
         expiresIn,
       });
-      res.json({ token });
+
+      res.json({ token, user });
     } catch (error) {
       next(error);
     }
