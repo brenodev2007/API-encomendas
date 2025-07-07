@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "@/utils/AppError";
+import { ZodError } from "zod";
 
 export function errorHandling(
   error: any,
@@ -9,7 +10,11 @@ export function errorHandling(
 ): void {
   if (error instanceof AppError) {
     res.status(error.statusCode).json({ message: error.message });
-  } else {
-    res.status(500).json({ message: "Internal Server Error" });
   }
+
+  if (error instanceof ZodError) {
+    res.status(400).json({ message: error.issues[0].message });
+  }
+
+  res.status(500).json({ message: "Internal Server Error" });
 }
