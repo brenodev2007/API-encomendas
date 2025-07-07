@@ -1,10 +1,11 @@
 import express from "express";
 import "express-async-error";
+import { routes } from "./routes";
 
 import { errorHandling } from "./middlewares/error-handling";
 
 const app = express();
-
+app.use(routes);
 app.use(express.json());
 app.use(errorHandling);
 
