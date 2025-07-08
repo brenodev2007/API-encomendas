@@ -7,7 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "generate": "prisma generate",
     "test": "jest",
-    "build": "tsup src "
+    "build": "tsup src"
   },
   "author": "",
   "license": "ISC",
