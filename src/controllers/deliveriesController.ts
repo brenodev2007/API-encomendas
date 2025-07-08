@@ -27,7 +27,11 @@ export class deliveriesController {
 
   index = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const deliveries = await prisma.delivery.findMany();
+      const deliveries = await prisma.delivery.findMany({
+        include: {
+          user: { select: { name: true, email: true } }, //retorna também os dados do usuário
+        },
+      });
 
       res.json({ deliveries });
     } catch (error) {
