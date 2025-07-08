@@ -11,3 +11,4 @@ const deliverieController = new deliveriesController();
 deliverieRoutes.use(ensureAuthenticated, verifyUserAuthorization(["sale"]));
 
 deliverieRoutes.post("/", deliverieController.create);
+deliverieRoutes.get("/", deliverieController.index);

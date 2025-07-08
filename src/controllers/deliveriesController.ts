@@ -24,4 +24,14 @@ export class deliveriesController {
       next(error);
     }
   };
+
+  index = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const deliveries = await prisma.delivery.findMany();
+
+      res.json({ deliveries });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
