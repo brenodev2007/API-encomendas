@@ -46,6 +46,10 @@ export class deliveryLogsController {
       where: {
         id: delivery_id,
       },
+      include: {
+        logs: true,
+        user: true,
+      },
     });
 
     if (req.user?.role === "customer" && req.user.id !== delivery?.userId) {
